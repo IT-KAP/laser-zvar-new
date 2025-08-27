@@ -22,3 +22,4 @@ npm run dev
 ## Produkcia
 - MAMP je lokálne. V produkcii nastav `MYSQL_*` na managed MySQL (Railway/PlanetScale) a deployni.
 # laser
+# laser-zvar

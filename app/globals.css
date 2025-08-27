@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --bg:#0b1020; --fg:#e5f2ff; }
+body { background: radial-gradient(1200px 800px at 80% -100px, #1e293b55, transparent 60%), var(--bg); color: var(--fg); }
+.container { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+.section { @apply py-16; }
+
+.card { @apply rounded-2xl border border-slate-700/40 bg-slate-900/60; }
+.card-hover { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.card-hover:hover { transform: translateY(-3px); border-color: rgba(148,163,184,.45); box-shadow: 0 15px 40px rgba(0,0,0,.35); }
+
+.btn { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition-all; }
+.btn-primary { @apply text-white bg-cyan-600; }
+.btn-primary:hover { filter: brightness(1.05); }
+.btn-outline { @apply border border-slate-600/60 text-slate-200/90; }
+
+.input, .select, .textarea { @apply w-full rounded-xl border px-3 py-2 outline-none bg-slate-900/60 text-slate-100 border-slate-600/60; }
+
+.kicker { @apply inline-flex items-center gap-2 text-cyan-300 text-xs font-semibold tracking-widest uppercase; letter-spacing: .2em; }
+.badge { @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-medium bg-cyan-400/10 text-cyan-200 border border-cyan-400/30; }
+
+.card{ @apply rounded-2xl bg-slate-900/60 border border-slate-700/40; }
+.btn{ @apply inline-flex items-center gap-2 rounded-xl px-3 py-2 border border-slate-700/60; }
+.btn-outline{ @apply hover:bg-slate-800/50; }
+.section{ @apply py-10; }
+.container{ @apply mx-auto px-4; }
+.kicker{ @apply text-xs uppercase tracking-wider text-slate-400; }
+
+/* --- Typografia blogu --- */
+.prose { /* základné doladenia */
+  --tw-prose-body: theme(colors.slate.200);
+  --tw-prose-headings: theme(colors.slate.50);
+  --tw-prose-links: theme(colors.cyan.400);
+  --tw-prose-bullets: theme(colors.slate.400);
+}
+
+.prose :where(p){ @apply leading-relaxed; }
+.prose :where(h2){ @apply mt-8 text-2xl font-semibold; }
+.prose :where(h3){ @apply mt-6 text-xl font-semibold; }
+.prose :where(ul){ @apply list-disc pl-6; }
+.prose :where(ol){ @apply list-decimal pl-6; }
+.prose :where(blockquote){
+  @apply border-l-4 border-cyan-400/40 pl-4 italic text-slate-300;
+}
+
+/* kód */
+.prose pre { @apply bg-slate-900/60 rounded-xl p-4 overflow-x-auto border border-slate-700/50; }
+.prose code { @apply bg-slate-800/80 px-1.5 py-0.5 rounded; }
+.prose pre code { @apply bg-transparent p-0; }
+
+/* --- Obrázky v obsahu (vložené cez editor) --- */
+.prose :where(img.blog-img){
+  @apply w-full rounded-2xl border border-slate-700/50 shadow-md my-6 object-contain;
+  max-height: 540px; /* nepresiahne výšku viewportu na menších obrazovkách */
+}
+
+/* center zarovnanie (ak obrázok menší) */
+.prose :where(p > img.blog-img){ @apply mx-auto; }
+
+/* voliteľne titulok pod obrázok, ak ho editor vloží do <figure><figcaption> */
+.prose :where(figure){ @apply my-6; }
+.prose :where(figcaption){ @apply text-sm text-slate-400 mt-2 text-center; }
+.prose ul { @apply list-disc pl-6; }
+.prose ol { @apply list-decimal pl-6; }
+
+.line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+
+/***** jednoduchá náhrada za line-clamp plugin *****/
+.line-clamp-2 { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.line-clamp-3 { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+
+/* lepšie lámanie dlhých slov / url */
+.prose { word-break: break-word; overflow-wrap: anywhere; }
+
+/* ak by sa v obsahu vyskytli ďalšie obrázky, nech sú pekne odsadene */
+.prose :where(img):not(:where(.not-prose *)) {
+  margin: 1rem 0;
+  border-radius: .75rem;
+}
+/* smooth scroll pre #ankre */
+html { scroll-behavior: smooth; }
+
+/* zníži prehliadaču chuť „odskočiť“ na históriu pri horizontálnych pohyboch */
+html, body {
+  overscroll-behavior-x: contain;
+}
+.prose img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.prose { font-size: 1.05rem; line-height: 1.7; }
+.prose p { margin: .75rem 0; }
+.prose h1,.prose h2,.prose h3 { margin: 1.2rem 0 .6rem; line-height: 1.25; }
+.prose ul { margin: .75rem 0; padding-left: 1.25rem; }
+.prose li { margin: .25rem 0; }
+.prose code { background: rgba(255,255,255,.06); padding:.12rem .35rem; border-radius:.3rem; }
+
+/* markdown wrapper */
+.md-body {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+/* bloky */
+.md-body h1,.md-body h2,.md-body h3,.md-body h4{margin:1.25rem 0 .5rem;font-weight:600}
+.md-body p{margin:0 0 1rem}
+.md-body ul,.md-body ol{margin:0 0 1rem 1.25rem}
+.md-body li{margin:.25rem 0}
+.md-body blockquote{
+  margin:1rem 0;padding:.75rem 1rem;border-left:3px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.04);border-radius:.5rem;color:rgba(255,255,255,.9)
+}
+.md-body pre{background:rgba(0,0,0,.35);padding:1rem;border-radius:.75rem;overflow:auto;margin:1rem 0}
+.md-body code{background:rgba(255,255,255,.08);padding:.15rem .35rem;border-radius:.35rem}
+
+/* obrázky v obsahu a z Markdownu */
+.md-body img,.md-img{
+  max-width:100%;height:auto;border-radius:.75rem;display:block;margin:1rem auto;
+  box-shadow:0 0 0 1px rgba(255,255,255,.08) inset;
+}
+
+/* linky */
+.md-body a{color:#9ecbff;text-decoration:underline}
+.md-body a:hover{opacity:.9}
+.md-body { white-space: normal; }
+
+.md-body table {
+  width: 100%;
+  margin: 1rem 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  display: table;
+  border-radius: 10px;
+}
+
+.md-body thead th,
+.md-body tbody td,
+.md-body tfoot td {
+  padding: .6rem .8rem;     /* breathing room */
+  border: 1px solid rgba(255,255,255,.12);
+  text-align: center;       /* center by default */
+  vertical-align: middle;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.md-body thead th {
+  background: rgba(255,255,255,.05);
+  font-weight: 600;
+  position: static !important;   /* make sure it’s NOT sticky */
+}
+
+/* optional zebra rows */
+.md-body tbody tr:nth-child(odd) td {
+  background: rgba(255,255,255,.02);
+}
