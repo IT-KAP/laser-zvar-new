@@ -172,3 +172,49 @@ html, body {
 .md-body tbody tr:nth-child(odd) td {
   background: rgba(255,255,255,.02);
 }
+
+
+/* --- Base table: let columns size naturally (prevents squish) --- */
+.md-body table {
+  table-layout: auto;          /* was fixed */
+}
+
+/* --- Scrollable wrapper that fits the container --- */
+.md-body .table-wrap {
+  --sb-h: 8px;
+  --sb-h-hover: 14px;                     /* bigger hit area on hover */
+  --sb-thumb: rgba(148,163,184,.28);
+  --sb-thumb-hover: rgba(148,163,184,.55);
+
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0;
+}
+
+/* Table grows to content width, but never smaller than container */
+.md-body .table-wrap > table {
+  width: max-content;
+  min-width: 100%;
+  max-width: none;
+}
+
+/* Optional: slim horizontal scrollbar */
+.md-body .table-wrap::-webkit-scrollbar { height: 8px; }
+.md-body .table-wrap::-webkit-scrollbar-thumb {
+  background: rgba(148,163,184,.28);
+  border-radius: 8px;
+}
+
+/* --- Mobile-only density tweaks (keep your numbers if you prefer) --- */
+@media (max-width: 640px) {
+  .md-body .table-wrap > table { font-size: 13px; }
+  .md-body thead th,
+  .md-body tbody td,
+  .md-body tfoot td { padding: .35rem .5rem; line-height: 1.3; }
+}
+@media (max-width: 480px) {
+  .md-body .table-wrap > table { font-size: 12px; }
+  .md-body thead th,
+  .md-body tbody td { padding: .3rem .45rem; }
+}
+

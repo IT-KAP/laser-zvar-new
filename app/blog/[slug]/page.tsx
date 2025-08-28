@@ -49,7 +49,7 @@ export default async function BlogDetail({ params }: { params: { slug: string } 
           <img src={post.coverImage} alt={post.title} className="w-full max-h-[60vh] object-contain" />
         </div>
       )}
-app/blog/[slug]/page.tsx
+      
       {/* ← tu je to dôležité: používame dangerouslySetInnerHTML */}
       <article className="md-body mt-8" dangerouslySetInnerHTML={{ __html: html }} />
     </div>
